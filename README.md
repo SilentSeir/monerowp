@@ -39,7 +39,7 @@ Linux CLI: https://docs.havenprotocol.org/Haven-1.0.2-CLI-Linux-x64-glibc-2-29.z
 The most secure way to accept Haven on your website. You'll need:
 
 * Root access to your webserver
-* Latest [Haven-currency binaries] https://github.com/havenprotocol/havenprotocol.com [CLI]
+* Latest [daemon] [CLI]
 
 After downloading (or compiling) the Monero binaries on your server, install the [systemd unit files](https://github.com/monero-integrations/monerowp/tree/master/assets/systemd-unit-files) or run `havend` and `haven-wallet-rpc` with `screen` or `tmux`. You can skip running `havend` by using a remote node with `haven-wallet-rpc` by adding `--daemon-address remote.haven.miner.rocks: port 17750 (2)nodes.hashvault.pro: port 17750 (3) Http://xhv-pst.minershive.ca: port 17750` to the `haven-wallet-rpc.service` file.
 
