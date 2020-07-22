@@ -1,8 +1,8 @@
-# Monero Gateway for WooCommerce
+# Haven Protocol Gateway for WooCommerce
 
 ## Features
 
-* Payment validation done through either `monero-wallet-rpc` or the [xmrchain.net blockchain explorer](https://xmrchain.net/).
+* Payment validation done through either `haven-wallet-rpc` or the Haven Blockchain explorer [https://explorer.havenprotocol.org/]
 * Validates payments with `cron`, so does not require users to stay on the order confirmation page for their order to validate.
 * Order status updates are done through AJAX instead of Javascript page reloads.
 * Customers can pay with multiple transactions and are notified as soon as transactions hit the mempool.
@@ -15,7 +15,12 @@
 
 ## Requirements
 
-* Monero wallet to receive payments - [GUI](https://github.com/monero-project/monero-gui/releases) - [CLI](https://github.com/monero-project/monero/releases) - [Paper](https://moneroaddress.org/)
+* Haven wallet to receive payments - Wallets
+MacOS Desktop: https://github.com/haven-protocol-org/haven-web-app/releases/download/v1.0.2/Haven-1.0.2.dmg
+Windows Desktop: https://github.com/haven-protocol-org/haven-web-app/releases/download/v1.0.2/Haven-1.0.2.Setup.exe
+MacOS CLI: https://docs.havenprotocol.org/Haven-1.0.2-CLI_MacOS-10.14-and-later.zip
+Windows CLI: https://docs.havenprotocol.org/Haven-1.0.2_CLI_Windows-x64.zip
+Linux CLI: https://docs.havenprotocol.org/Haven-1.0.2-CLI-Linux-x64-glibc-2-29.zip
 * [BCMath](http://php.net/manual/en/book.bc.php) - A PHP extension used for arbitrary precision maths
 
 ## Installing the plugin
@@ -27,42 +32,42 @@
 
 ## Option 1: Use your wallet address and viewkey
 
-This is the easiest way to start accepting Monero on your website. You'll need:
+This is the easiest way to start accepting Haven on your website. You'll need:
 
-* Your Monero wallet address starting with `4`
+* Your Haven wallet address starting with `4` ?
 * Your wallet's secret viewkey
 
 Then simply select the `viewkey` option in the settings page and paste your address and viewkey. You're all set!
 
 Note on privacy: when you validate transactions with your private viewkey, your viewkey is sent to (but not stored on) xmrchain.net over HTTPS. This could potentially allow an attacker to see your incoming, but not outgoing, transactions if they were to get his hands on your viewkey. Even if this were to happen, your funds would still be safe and it would be impossible for somebody to steal your money. For maximum privacy use your own `monero-wallet-rpc` instance.
 
-## Option 2: Using `monero-wallet-rpc`
+## Option 2: Using `haven-wallet-rpc` [This is possible]
 
-The most secure way to accept Monero on your website. You'll need:
+The most secure way to accept Haven on your website. You'll need:
 
 * Root access to your webserver
-* Latest [Monero-currency binaries](https://github.com/monero-project/monero/releases)
+* Latest [Haven-currency binaries] https://github.com/havenprotocol/havenprotocol.com [CLI]
 
-After downloading (or compiling) the Monero binaries on your server, install the [systemd unit files](https://github.com/monero-integrations/monerowp/tree/master/assets/systemd-unit-files) or run `monerod` and `monero-wallet-rpc` with `screen` or `tmux`. You can skip running `monerod` by using a remote node with `monero-wallet-rpc` by adding `--daemon-address node.moneroworld.com:18089` to the `monero-wallet-rpc.service` file.
+After downloading (or compiling) the Monero binaries on your server, install the [systemd unit files](https://github.com/monero-integrations/monerowp/tree/master/assets/systemd-unit-files) or run `havend` and `haven-wallet-rpc` with `screen` or `tmux`. You can skip running `havend` by using a remote node with `haven-wallet-rpc` by adding `--daemon-address remote.haven.miner.rocks: port 17750 (2)nodes.hashvault.pro: port 17750 (3) Http://xhv-pst.minershive.ca: port 17750` to the `haven-wallet-rpc.service` file.
 
 Note on security: using this option, while the most secure, requires you to run the Monero wallet RPC program on your server. Best practice for this is to use a view-only wallet since otherwise your server would be running a hot-wallet and a security breach could allow hackers to empty your funds.
 
 ## Configuration
 
-* `Enable / Disable` - Turn on or off Monero gateway. (Default: Disable)
-* `Title` - Name of the payment gateway as displayed to the customer. (Default: Monero Gateway)
-* `Discount for using Monero` - Percentage discount applied to orders for paying with Monero. Can also be negative to apply a surcharge. (Default: 0)
+* `Enable / Disable` - Turn on or off Haven gateway. (Default: Disable)
+* `Title` - Name of the payment gateway as displayed to the customer. (Default: Haven Gateway)
+* `Discount for using Haven` - Percentage discount applied to orders for paying with Haven. Can also be negative to apply a surcharge. (Default: 0)
 * `Order valid time` - Number of seconds after order is placed that the transaction must be seen in the mempool. (Default: 3600 [1 hour])
 * `Number of confirmations` - Number of confirmations the transaction must recieve before the order is marked as complete. Use `0` for nearly instant confirmation. (Default: 5)
-* `Confirmation Type` - Confirm transactions with either your viewkey, or by using `monero-wallet-rpc`. (Default: viewkey)
-* `Monero Address` (if confirmation type is viewkey) - Your public Monero address starting with 4. (No default)
+* `Confirmation Type` - Confirm transactions with either your viewkey, or by using `haven-wallet-rpc`. (Default: viewkey)
+* `Haven Address` (if confirmation type is viewkey) - Your public Haven address starting with 4. (No default)
 * `Secret Viewkey` (if confirmation type is viewkey) - Your *private* viewkey (No default)
-* `Monero wallet RPC Host/IP` (if confirmation type is `monero-wallet-rpc`) - IP address where the wallet rpc is running. It is highly discouraged to run the wallet anywhere other than the local server! (Default: 127.0.0.1)
-* `Monero wallet RPC port` (if confirmation type is `monero-wallet-rpc`) - Port the wallet rpc is bound to with the `--rpc-bind-port` argument. (Default 18080)
+* `Haven wallet RPC Host/IP` (if confirmation type is `monero-wallet-rpc`) - IP address where the wallet rpc is running. It is highly discouraged to run the wallet anywhere other than the local server! (Default: 127.0.0.1)
+* `Haven wallet RPC port` (if confirmation type is `haven-wallet-rpc`) - Port the wallet rpc is bound to with the `--rpc-bind-port` argument. (Default 18080)
 * `Testnet` - Check this to change the blockchain explorer links to the testnet explorer. (Default: unchecked)
 * `SSL warnings` - Check this to silence SSL warnings. (Default: unchecked)
 * `Show QR Code` - Show payment QR codes. (Default: unchecked)
-* `Show Prices in Monero` - Convert all prices on the frontend to Monero. Experimental feature, only use if you do not accept any other payment option. (Default: unchecked)
+* `Show Prices in Haven` - Convert all prices on the frontend to Haven. Experimental feature, only use if you do not accept any other payment option. (Default: unchecked)
 * `Display Decimals` (if show prices in Monero is enabled) - Number of decimals to round prices to on the frontend. The final order amount will not be rounded and will be displayed down to the nanoMonero. (Default: 12)
 
 ## Shortcodes
@@ -71,37 +76,37 @@ This plugin makes available two shortcodes that you can use in your theme.
 
 #### Live price shortcode
 
-This will display the price of Monero in the selected currency. If no currency is provided, the store's default currency will be used.
+This will display the price of Haven in the selected currency. If no currency is provided, the store's default currency will be used.
 
 ```
-[monero-price]
-[monero-price currency="BTC"]
-[monero-price currency="USD"]
-[monero-price currency="CAD"]
-[monero-price currency="EUR"]
-[monero-price currency="GBP"]
+[haven-price]
+[haven-price currency="BTC"]
+[haven-price currency="USD"]
+[haven-price currency="CAD"]
+[haven-price currency="EUR"]
+[haven-price currency="GBP"]
 ```
 Will display:
 ```
-1 XMR = 123.68000 USD
-1 XMR = 0.01827000 BTC
-1 XMR = 123.68000 USD
-1 XMR = 168.43000 CAD
-1 XMR = 105.54000 EUR
-1 XMR = 94.84000 GBP
+1 XHV = 123.68000 USD
+1 XHV = 0.01827000 BTC
+1 XHV = 123.68000 USD
+1 XHV = 168.43000 CAD
+1 XHV = 105.54000 EUR
+1 XHV = 94.84000 GBP
 ```
 
 
-#### Monero accepted here badge
+#### Haven accepted here badge
 
-This will display a badge showing that you accept Monero-currency.
+This will display a badge showing that you accept Haven-currency.
 
-`[monero-accepted-here]`
+`[haven-accepted-here]`
 
-![Monero Accepted Here](/assets/images/monero-accepted-here.png?raw=true "Monero Accepted Here")
+![Haven Accepted Here](/assets/images/monero-accepted-here.png?raw=true "Monero Accepted Here") [new image needed]
 
 ## Donations
 
-monero-integrations: 44krVcL6TPkANjpFwS2GWvg1kJhTrN7y9heVeQiDJ3rP8iGbCd5GeA4f3c2NKYHC1R4mCgnW7dsUUUae2m9GiNBGT4T8s2X
+XHV : hvxxvYDegzr27W9WQ7MeGf6sj7xUM8QqujkmWP5zDkcDe1aDrswDFdNTgG1oZNYprqPF1czdixj58a2kaAVZ59Gv2tFpdvubSZ
 
-ryo-currency: 4A6BQp7do5MTxpCguq1kAS27yMLpbHcf89Ha2a8Shayt2vXkCr6QRpAXr1gLYRV5esfzoK3vLJTm5bDWk5gKmNrT6s6xZep
+XLA : Se37n8eHBMuXBasEYTEmqfaNSNZ2EnJV3F9FCwuUm6Efe4y8pCxgLapWCUWxDrxkDJMku1sFXEQafV8QSYkhJqkv1dPCuZPzf
