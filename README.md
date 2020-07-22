@@ -2,7 +2,7 @@
 
 ## Features
 
-* Payment validation done through either `haven-wallet-rpc` or the Haven Blockchain explorer [https://explorer.havenprotocol.org/]
+* Payment validation done through `haven-wallet-rpc` 
 * Validates payments with `cron`, so does not require users to stay on the order confirmation page for their order to validate.
 * Order status updates are done through AJAX instead of Javascript page reloads.
 * Customers can pay with multiple transactions and are notified as soon as transactions hit the mempool.
