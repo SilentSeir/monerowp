@@ -16,11 +16,17 @@
 ## Requirements
 
 * Haven wallet to receive payments - Wallets
+
 MacOS Desktop: https://github.com/haven-protocol-org/haven-web-app/releases/download/v1.0.2/Haven-1.0.2.dmg
+
 Windows Desktop: https://github.com/haven-protocol-org/haven-web-app/releases/download/v1.0.2/Haven-1.0.2.Setup.exe
+
 MacOS CLI: https://docs.havenprotocol.org/Haven-1.0.2-CLI_MacOS-10.14-and-later.zip
+
 Windows CLI: https://docs.havenprotocol.org/Haven-1.0.2_CLI_Windows-x64.zip
+
 Linux CLI: https://docs.havenprotocol.org/Haven-1.0.2-CLI-Linux-x64-glibc-2-29.zip
+
 * [BCMath](http://php.net/manual/en/book.bc.php) - A PHP extension used for arbitrary precision maths
 
 ## Installing the plugin
@@ -29,19 +35,6 @@ Linux CLI: https://docs.havenprotocol.org/Haven-1.0.2-CLI-Linux-x64-glibc-2-29.z
 * Unzip or place the `monero-woocommerce-gateway` folder in the `wp-content/plugins` directory.
 * Activate "Monero Woocommerce Gateway" in your WordPress admin dashboard.
 * It is highly recommended that you use native cronjobs instead of WordPress's "Poor Man's Cron" by adding `define('DISABLE_WP_CRON', true);` into your `wp-config.php` file and adding `* * * * * wget -q -O - https://yourstore.com/wp-cron.php?doing_wp_cron >/dev/null 2>&1` to your crontab.
-
-## Option 1: Use your wallet address and viewkey
-
-This is the easiest way to start accepting Haven on your website. You'll need:
-
-* Your Haven wallet address starting with `4` ?
-* Your wallet's secret viewkey
-
-Then simply select the `viewkey` option in the settings page and paste your address and viewkey. You're all set!
-
-Note on privacy: when you validate transactions with your private viewkey, your viewkey is sent to (but not stored on) xmrchain.net over HTTPS. This could potentially allow an attacker to see your incoming, but not outgoing, transactions if they were to get his hands on your viewkey. Even if this were to happen, your funds would still be safe and it would be impossible for somebody to steal your money. For maximum privacy use your own `monero-wallet-rpc` instance.
-
-## Option 2: Using `haven-wallet-rpc` [This is possible]
 
 The most secure way to accept Haven on your website. You'll need:
 
