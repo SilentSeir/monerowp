@@ -13,13 +13,13 @@ Author URI: https://monerointegrations.com/
 defined( 'ABSPATH' ) || exit;
 
 // Constants, you can edit these if you fork this repo
-define('MONERO_GATEWAY_MAINNET_EXPLORER_URL', 'https://xmrchain.net/');
-define('MONERO_GATEWAY_TESTNET_EXPLORER_URL', 'https://testnet.xmrchain.com/');
-define('MONERO_GATEWAY_ADDRESS_PREFIX', 0x12);
-define('MONERO_GATEWAY_ADDRESS_PREFIX_INTEGRATED', 0x13);
-define('MONERO_GATEWAY_ATOMIC_UNITS', 12);
-define('MONERO_GATEWAY_ATOMIC_UNIT_THRESHOLD', 10); // Amount under in atomic units payment is valid
-define('MONERO_GATEWAY_DIFFICULTY_TARGET', 120);
+define('HAVEN_GATEWAY_MAINNET_EXPLORER_URL', 'https://explorer.havenprotocol.org/');
+define('HAVEN_GATEWAY_TESTNET_EXPLORER_URL', 'NULL');
+define('HAVEN_GATEWAY_ADDRESS_PREFIX', 0x12);
+define('HAVEN_GATEWAY_ADDRESS_PREFIX_INTEGRATED', 0x13);
+define('HAVEN_GATEWAY_ATOMIC_UNITS', 12);
+define('HAVEN_GATEWAY_ATOMIC_UNIT_THRESHOLD', 10); // Amount under in atomic units payment is valid
+define('HAVEN_GATEWAY_DIFFICULTY_TARGET', 120);
 
 // Do not edit these constants
 define('MONERO_GATEWAY_PLUGIN_DIR', plugin_dir_path(__FILE__));
