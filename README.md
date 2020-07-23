@@ -41,7 +41,7 @@ The most secure way to accept Haven on your website. You'll need:
 * Root access to your webserver
 * Latest [daemon] [CLI]
 
-After downloading (or compiling) the Monero binaries on your server, install the [systemd unit files](https://github.com/monero-integrations/monerowp/tree/master/assets/systemd-unit-files) or run `havend` and `haven-wallet-rpc` with `screen` or `tmux`. You can skip running `havend` by using a remote node with `haven-wallet-rpc` by adding `--daemon-address remote.haven.miner.rocks: port 17750 (2)nodes.hashvault.pro: port 17750 (3) Http://xhv-pst.minershive.ca: port 17750` to the `haven-wallet-rpc.service` file.
+After downloading (or compiling) the Haven binaries on your server, install the [systemd unit files](https://github.com/monero-integrations/monerowp/tree/master/assets/systemd-unit-files) or run `havend` and `haven-wallet-rpc` with `screen` or `tmux`. You can skip running `havend` by using a remote node with `haven-wallet-rpc` by adding `--daemon-address remote.haven.miner.rocks: port 17750 (2)nodes.hashvault.pro: port 17750 (3) Http://xhv-pst.minershive.ca: port 17750` to the `haven-wallet-rpc.service` file.
 
 Note on security: using this option, while the most secure, requires you to run the Monero wallet RPC program on your server. Best practice for this is to use a view-only wallet since otherwise your server would be running a hot-wallet and a security breach could allow hackers to empty your funds.
 
